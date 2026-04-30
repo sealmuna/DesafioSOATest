@@ -36,15 +36,15 @@ Este README explica brevemente cómo configurar una conexión JDBC en Parasoft S
 --
 -- --------------------------------------------------------
 --
--- Estructura de tabla para la tabla `captura\_pokemon`
+-- Estructura de tabla para la tabla `captura_pokemon`
 --
 
 
-CREATE TABLE `captura\_pokemon` (
+CREATE TABLE `captura_pokemon` (
 
-	`pokemon\_name` varchar(100) NOT NULL,
+	`pokemon_name` varchar(100) NOT NULL,
 
-	`id\_transaccion` int(5) NOT NULL,
+	`id_transaccion` int(5) NOT NULL,
 
 	`fecha` varchar(30) NOT NULL
 
