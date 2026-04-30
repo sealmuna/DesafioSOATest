@@ -1,0 +1,412 @@
+---
+parasoftVersion: 2025.2.0
+productVersion: 10.7.3
+schemaVersion: 3
+suite:
+  $type: TestSuite
+  name: Consumo Básico y Extracción de Variables (Data Bank)
+  hasEnvironmentConfig: true
+  environmentConfig:
+    environments:
+    - variables:
+      - name: urlBase
+        value: https://pokeapi.co/api/v2
+      name: Variables
+      active: true
+  lastModifiedBy: SALMUNAP
+  testLogicVariables:
+  - $type: TestLogicString
+    name: primeraHabilidad
+    value:
+      $type: TestLogicVariableString
+      originalValue: 0
+      value: 0
+  - $type: TestLogicString
+    name: urlPrimeraHabilidad
+    value:
+      $type: TestLogicVariableString
+      originalValue: 0
+      value: 0
+  tests:
+  - $type: RESTClientToolTest
+    name: REST Client
+    testID: 1
+    tool:
+      $type: RESTClient
+      dataSourceNames:
+      - New Datasource
+      iconName: RESTClient
+      name: REST Ditto
+      outputTools:
+      - $type: GenericDataBank
+        iconName: XMLDataBank
+        name: JSON Data Bank
+        wrappedTool:
+          $type: XMLtoDataSource
+          iconName: XMLDataBank
+          name: XML Data Bank
+          selectedXPaths:
+          - elementOption: 1
+            contentOption: 1
+            XMLDataBank_ExtractXPath: "/root/abilities[1]/item[1]/ability[1]/name[1]/text()"
+            mode: 1
+          - elementOption: 1
+            contentOption: 1
+            XMLDataBank_ExtractXPath: "/root/abilities[1]/item[1]/ability[1]/url[1]/text()"
+            mode: 1
+          canonicalizeOutput: true
+          xmlMessage: true
+          virtualDSCreator:
+            writableColumns:
+            - testVariableName: primeraHabilidad
+              mode: 3
+              customName: "Test 1: name"
+            - testVariableName: urlPrimeraHabilidad
+              mode: 3
+              customName: "Test 1: url"
+        conversionStrategy:
+          dataFormatName: JSON
+          conversionStrategyId: JSON
+          conversionStrategyClassName: com.parasoft.xml.convert.json.JsonConversionStrategy
+      formJson:
+        value:
+          $type: ElementValue
+          writeType: true
+          type:
+            $type: ElementType
+            localName: root
+            bodyType:
+              $type: ComplexType
+              attributes:
+              - ns: ""
+                name: type
+                fixed: object
+                contentType:
+                  $type: StringType
+                required: true
+              name: rootType
+              compositor: true
+              compositorObj:
+                $type: AllCompositor
+          replacedColumn: ""
+          values:
+          - $type: ComplexValue
+            replacedColumn: ""
+            attributes:
+            - replacedColumn: ""
+              value:
+                $type: StringValue
+                replacedColumn: ""
+                value: object
+              useValue: true
+            compositorValue: true
+            compositorValueObj:
+              replacedColumn: ""
+              values:
+                $type: CompositorValueSetCollectionSet
+                set:
+                - $type: CompositorValueSet
+        elementTypeName: root
+      jsonBuilder:
+        hasValue: true
+        value:
+          $type: JSONObjectValue
+          nameIsNull: true
+      formInput:
+        value:
+          $type: ElementValue
+          writeType: true
+          type:
+            $type: ElementType
+            localName: ""
+            bodyType:
+              $type: ComplexType
+              name: anonymous
+              compositor: true
+              compositorObj:
+                $type: SequenceCompositor
+          replacedColumn: ""
+          values:
+          - $type: ComplexValue
+            replacedColumn: ""
+            compositorValue: true
+            compositorValueObj:
+              replacedColumn: ""
+              values:
+                $type: CompositorValueSetCollectionSet
+                set:
+                - $type: CompositorValueSet
+      constrainToSchema: false
+      jmsMessageOutputProvider:
+        $type: JMSMessageOutputProvider
+        jmsOutputProviderRequest:
+          $type: JMSOutputProvider
+          name: Request Object
+          menuName: Object
+        jmsOutputProviderResponse:
+          $type: JMSOutputProvider
+          name: Response Message Object
+          menuName: Message Object
+      validResponseRange:
+        validResponseRange:
+          values:
+          - $type: ScriptedValue
+          fixedValue:
+            $type: StringTestValue
+            validResponseRange: 200
+      router:
+        values:
+        - $type: ScriptedValue
+        fixedValue:
+          $type: StringTestValue
+          HTTPClient_Endpoint: "${urlBase}/pokemon/ditto"
+        parameterizedValue:
+          column: primeraHabilidad
+      transportProperties:
+        manager:
+          protocol: 1
+          properties:
+          - $type: HTTPClientHTTPProperties
+            followRedirects:
+              bool: true
+            common:
+              method:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: HTTPMethodTestValue
+                  method: GET
+                parameterizedValue:
+                  column: primeraHabilidad
+            protocol: 1
+            keepAlive1_1:
+              bool: true
+        messageExchangePattern:
+          inverted: true
+      outputProviders:
+        requestHeader:
+          $type: HTTPNamedToolOutputProvider
+          menuName: Transport Header
+          name: Request Transport Header
+        responseHeader:
+          $type: HTTPNamedToolOutputProvider
+          menuName: Transport Header
+          name: Response Transport Header
+        xmlRequestOutput:
+          $type: NamedXMLToolOutputProvider
+          menuName: Traffic
+          name: Request Traffic
+        trafficOutput:
+          m_name: Traffic Stream
+        objectOutput:
+          $type: ObjectOutputProvider
+          outputTools:
+          - $type: TrafficViewer
+            iconName: TrafficViewer
+            name: Traffic Viewer
+            showRequestHeaders: true
+            showResponseHeaders: true
+          name: Traffic Object
+      literal:
+        use: 1
+        text:
+          MessagingClient_LiteralMessage: ""
+          type: application/json
+        dataSource:
+          columnName: primeraHabilidad
+      mode: Literal
+      literalQuery:
+        isPropertiesRef: true
+      literalPath:
+        pathElements:
+        - values:
+          - $type: ScriptedValue
+          fixedValue:
+            $type: StringTestValue
+            value: pokemon
+        - values:
+          - $type: ScriptedValue
+          fixedValue:
+            $type: StringTestValue
+            value: ditto
+      resourceMethod:
+        httpMethod: GET
+      baseUrl:
+        values:
+        - $type: ScriptedValue
+        - $type: WadlTestValue
+        fixedValue:
+          $type: StringTestValue
+        selectedIndex: 1
+  - $type: RESTClientToolTest
+    name: REST Client
+    testID: 2
+    tool:
+      $type: RESTClient
+      iconName: RESTClient
+      name: REST Habilidad
+      outputTools:
+      - $type: GenericAssertionTool
+        iconName: XMLAssertor
+        name: JSON Assertor Habilidad
+        wrappedTool:
+          $type: XMLAssertionTool
+          iconName: XMLAssertor
+          name: XML Assertor
+          assertions:
+          - $type: StringComparisonAssertion
+            timestamp: 1777489503833
+            name: String Comparison Assertion
+            extractEntireElement: true
+            Assertion_XPath: /root/string()
+            comparisonMode: 4
+            value:
+              name: String Comparison Assertion
+              value:
+                fixedValue:
+                  $type: StringTestValue
+                  value: Ce Pokémon ne peut pas être paralysé
+          message:
+            $type: ExpectedXMLMessage
+            message: true
+        conversionStrategy:
+          dataFormatName: JSON
+          conversionStrategyId: JSON
+          conversionStrategyClassName: com.parasoft.xml.convert.json.JsonConversionStrategy
+      formJson:
+        value:
+          $type: ElementValue
+          writeType: true
+          hasReference: true
+          qnameAsString: :root
+          replacedColumn: ""
+          values:
+          - $type: ComplexValue
+            replacedColumn: ""
+            attributes:
+            - replacedColumn: ""
+              value:
+                $type: StringValue
+                replacedColumn: ""
+                value: object
+              useValue: true
+            compositorValue: true
+            compositorValueObj:
+              replacedColumn: ""
+              values:
+                $type: CompositorValueSetCollectionSet
+                set:
+                - $type: CompositorValueSet
+        elementTypeName: root
+      jsonBuilder:
+        hasValue: true
+        value:
+          $type: JSONObjectValue
+          nameIsNull: true
+      formInput:
+        value:
+          $type: ElementValue
+          writeType: true
+          hasReference: true
+          qnameAsString: ":"
+          replacedColumn: ""
+          values:
+          - $type: ComplexValue
+            replacedColumn: ""
+            compositorValue: true
+            compositorValueObj:
+              replacedColumn: ""
+              values:
+                $type: CompositorValueSetCollectionSet
+                set:
+                - $type: CompositorValueSet
+      constrainToSchema: false
+      jmsMessageOutputProvider:
+        $type: JMSMessageOutputProvider
+        jmsOutputProviderRequest:
+          $type: JMSOutputProvider
+          name: Request Object
+          menuName: Object
+        jmsOutputProviderResponse:
+          $type: JMSOutputProvider
+          name: Response Message Object
+          menuName: Message Object
+      validResponseRange:
+        validResponseRange:
+          values:
+          - $type: ScriptedValue
+          fixedValue:
+            $type: StringTestValue
+            validResponseRange: 200
+      router:
+        values:
+        - $type: ScriptedValue
+        fixedValue:
+          $type: StringTestValue
+          HTTPClient_Endpoint: "${urlPrimeraHabilidad}"
+        parameterizedValue:
+          column: urlPrimeraHabilidad
+      transportProperties:
+        manager:
+          protocol: 1
+          properties:
+          - $type: HTTPClientHTTPProperties
+            followRedirects:
+              bool: true
+            common:
+              method:
+                values:
+                - $type: ScriptedValue
+                fixedValue:
+                  $type: HTTPMethodTestValue
+                  method: GET
+                parameterizedValue:
+                  column: urlPrimeraHabilidad
+            protocol: 1
+            keepAlive1_1:
+              bool: true
+        messageExchangePattern:
+          inverted: true
+      outputProviders:
+        requestHeader:
+          $type: HTTPNamedToolOutputProvider
+          menuName: Transport Header
+          name: Request Transport Header
+        responseHeader:
+          $type: HTTPNamedToolOutputProvider
+          menuName: Transport Header
+          name: Response Transport Header
+        xmlRequestOutput:
+          $type: NamedXMLToolOutputProvider
+          menuName: Traffic
+          name: Request Traffic
+        trafficOutput:
+          m_name: Traffic Stream
+        objectOutput:
+          $type: ObjectOutputProvider
+          outputTools:
+          - $type: TrafficViewer
+            iconName: TrafficViewer
+            name: Traffic Viewer
+            showRequestHeaders: true
+            showResponseHeaders: true
+          name: Traffic Object
+      literal:
+        use: 1
+        text:
+          MessagingClient_LiteralMessage: ""
+          type: application/json
+        dataSource:
+          columnName: primeraHabilidad
+      mode: Scripted
+      literalQuery:
+        isPropertiesRef: true
+      resourceMethod:
+        httpMethod: GET
+      baseUrl:
+        values:
+        - $type: ScriptedValue
+        - $type: WadlTestValue
+        fixedValue:
+          $type: StringTestValue
+        selectedIndex: 1

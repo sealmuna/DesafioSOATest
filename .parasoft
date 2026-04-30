@@ -1,0 +1,19 @@
+#Thu Apr 30 12:12:45 CLT 2026
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/datasources=ds_-1200205838_1777409086405_1714849014
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.first_row=0
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.last_row=0
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.name=pokemon
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_columns_size=26
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_contain_header=true
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_0_0=PokemonName
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_0_1=ExpectedType
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_1_0=charmander
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_1_1=fire
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_2_0=squirtle
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_2_1=water
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_3_0=bulbasaur
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_content_3_1=grass
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.table_rows_size=100
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.type=Table
+.datasources/ds-module.wk\:///TestAssets/Escenario2.tst\#0000000000/ds_-1200205838_1777409086405_1714849014.use_all_rows=true
+project.path=/TestAssets
